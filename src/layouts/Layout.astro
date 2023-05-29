@@ -1,0 +1,36 @@
+---
+import "@styles/index.css";
+
+import App from "./App.jsx";
+
+const { page, title } = Astro.props;
+---
+
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content="Optimisez votre activité" />
+
+		<title>{title}</title>
+		<link rel="icon" type="image/svg+xml" href="logo-black.svg?v=2" />
+
+		<script>
+			window.onscroll = function () {
+				var header_navbar = document.querySelector(".navbar-area");
+
+				var logo = document.querySelector(".navbar-brand img");
+				if (window.pageYOffset > 100) {
+					header_navbar.classList.add("sticky");
+					logo.src = "/logo-black.svg?v=2";
+				} else {
+					header_navbar.classList.remove("sticky");
+					logo.src = "/logo.svg?v=2";
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<App client:load />
+	</body>
+</html>
